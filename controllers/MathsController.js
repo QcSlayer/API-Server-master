@@ -17,9 +17,12 @@ module.exports =
 
             }
             else {
-                if (Object.keys(this.HttpContext.path.params).length > 3) {
+                if (Object.keys(this.HttpContext.path.params).length > 3 && this.HttpContext.path.params.y) {
                     this.HttpContext.path.params.error = ("Too many params");
 
+                }
+                else if (Object.keys(this.HttpContext.path.params).length > 2 && this.HttpContext.path.params.n) {
+                    this.HttpContext.path.params.error = ("Too many params");
                 }
                 else if (this.HttpContext.path.params.X || this.HttpContext.path.params.Y)
                     this.HttpContext.path.params.error = ("Invalid Param");
