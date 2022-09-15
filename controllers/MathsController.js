@@ -1,3 +1,4 @@
+//Fait par Simon Huet
 const path = require('path');
 const fs = require('fs');
 const { Console } = require('console');
@@ -18,9 +19,9 @@ module.exports =
             else {
                 if (Object.keys(this.HttpContext.path.params).length > 3) {
                     this.HttpContext.path.params.error = ("Too many params");
-                    
+
                 }
-                else if(this.HttpContext.path.params.X || this.HttpContext.path.params.Y)
+                else if (this.HttpContext.path.params.X || this.HttpContext.path.params.Y)
                     this.HttpContext.path.params.error = ("Invalid Param");
                 else {
                     if (this.HttpContext.path.params.op || this.HttpContext.path.params.op == "") {
@@ -31,31 +32,29 @@ module.exports =
                                 if (n >= 0) {
                                     let fin = factorial(n);
                                     console.log("Factorial of " + n + " is " + fin)
-                                    this.HttpContext.path.params.value = (n);
+                                    this.HttpContext.path.params.value = (fin);
                                 }
                                 else
-                                    console.log("Factorial of negative number doesn't exist");
-                                this.HttpContext.path.params.error = ("Factorial of negative number doesn't exist");
+                                     this.HttpContext.path.params.error = ("Factorial of negative number doesn't exist");
                             }
                             if (this.HttpContext.path.params.op == "p") {
                                 if (n < 0) {
                                     console.log("un nombre négatif ne peut pas être premier");
                                 }
                                 else {
-                                    
+
                                     let nbPremier = isPrime(n)
 
                                     console.log(n + " est premier? " + nbPremier);
                                     this.HttpContext.path.params.value = nbPremier;
-                                    
+
                                 }
                             }
-                            if (this.HttpContext.path.params.op == "np")
-                            {
+                            if (this.HttpContext.path.params.op == "np") {
                                 let prime = findPrime(n);
-                                    console.log("Le enieme 1er est : " + prime);
+                                console.log("Le enieme 1er est : " + prime);
 
-                                    this.HttpContext.path.params.value = prime;
+                                this.HttpContext.path.params.value = prime;
                             }
                         }
                         else {
